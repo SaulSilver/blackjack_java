@@ -1,6 +1,9 @@
 package BlackJack.view;
 
-public class SwedishView implements IView 
+import BlackJack.controller.PlayGame;
+import BlackJack.model.Game;
+
+public class SwedishView implements IView
     {
         public void DisplayWelcomeMessage()
         {
@@ -21,7 +24,25 @@ public class SwedishView implements IView
             return 0;
           }
         }
-        
+
+        public boolean CheckInput(Game a_game, int input)
+        {
+            PlayGame controller = new PlayGame();
+            if (input == 'p')
+            {
+                controller.StartGame(a_game);
+            }
+            else if (input == 'h')
+            {
+                controller.HitOnce(a_game);
+            }
+            else if (input == 's')
+            {
+                controller.StandDown(a_game);
+            }
+            return input != 'q';
+        }
+
         public void DisplayCard(BlackJack.model.Card a_card)
         {
             if (a_card.GetColor() == BlackJack.model.Card.Color.Hidden)

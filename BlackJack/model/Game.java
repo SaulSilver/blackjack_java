@@ -32,11 +32,7 @@ public class Game {
     return m_dealer.Hit(m_player);
   }
   
-  public boolean Stand()
-  {
-    // TODO: Implement this according to Game_Stand.sequencediagram
-    return true;
-  }
+  public boolean Stand() { return m_dealer.Stand();  }
   
   public Iterable<Card> GetDealerHand()
   {
@@ -56,6 +52,12 @@ public class Game {
   public int GetPlayerScore()
   {
     return m_player.CalcScore();
+  }
+
+  public void RegisterSubscribers(IObserver a_observer)
+  {
+    m_player.Register(a_observer);
+    m_dealer.Register(a_observer);
   }
     
   

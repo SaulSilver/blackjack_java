@@ -10,21 +10,13 @@ class AmericanNewGameStrategy implements INewGameStrategy {
   public boolean NewGame(Deck a_deck, Dealer a_dealer, Player a_player) {
     Card c;
 
-    c = a_deck.GetCard();
-    c.Show(true);
-    a_player.DealCard(c);
+    a_player.GiveCard(a_deck, true);
 
-    c = a_deck.GetCard();
-    c.Show(true);
-    a_dealer.DealCard(c);
+    a_dealer.GiveCard(a_deck, true);
 
-    c = a_deck.GetCard();
-    c.Show(true);
-    a_player.DealCard(c);
+    a_player.GiveCard(a_deck, true);
 
-    c = a_deck.GetCard();
-    c.Show(false);
-    a_dealer.DealCard(c);
+    a_dealer.GiveCard(a_deck, false);
 
     return true;
   }
