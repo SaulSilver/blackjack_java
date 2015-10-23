@@ -7,7 +7,7 @@ public class Dealer extends Player {
   private Deck m_deck;
   private INewGameStrategy m_newGameRule;
   private IHitStrategy m_soft17Rule;
-  private IDrawWinRule m_drawWinRule;
+  private DrawWinRule m_drawWinRule;
 
   public Dealer(RulesFactory a_rulesFactory) {
   

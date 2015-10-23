@@ -1,6 +1,6 @@
 package BlackJack.model.rules;
 
-public class IDrawWinRule
+public class DrawWinRule
 {
     public enum WinRules{
         dealerAdvantage,
@@ -17,7 +17,7 @@ public class IDrawWinRule
         this.win_rule = win_rule;
     }
 
-    public IDrawWinRule (WinRules win_rule)	{
+    public DrawWinRule(WinRules win_rule)	{
         this.win_rule = win_rule;
     }
 

@@ -8,6 +8,6 @@ public class RulesFactory {
 
   public IHitStrategy GetSoft17Rule() { return  new Soft17Strategy(); }
 
-  public IDrawWinRule GetWinRule() { return new IDrawWinRule(IDrawWinRule.WinRules.dealerAdvantage); }
+  public DrawWinRule GetWinRule() { return new DrawWinRule(DrawWinRule.WinRules.dealerAdvantage); }
 
 }
