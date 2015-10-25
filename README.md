@@ -1,3 +1,3 @@
 # blackjack_java
 
-Fork this code to work with java in workshop 3. This repo only contains java files.
+This is workshop 3. To show the class diagram, open the url in the file 'classDiagram' by a browser.
