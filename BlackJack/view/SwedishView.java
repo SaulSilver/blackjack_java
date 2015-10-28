@@ -25,22 +25,25 @@ public class SwedishView implements IView
           }
         }
 
-        public boolean CheckInput(Game a_game, int input)
+        public InputValue CheckInput(int input)
         {
-            PlayGame controller = new PlayGame();
             if (input == 'p')
             {
-                controller.StartGame(a_game);
+                return InputValue.Play;
             }
             else if (input == 'h')
             {
-                controller.HitOnce(a_game);
+                return InputValue.Hit;
             }
             else if (input == 's')
             {
-                controller.StandDown(a_game);
+                return InputValue.Stand;
             }
-            return input != 'q';
+            else if (input == 'q')
+            {
+                return InputValue.Quit;
+            }
+            return InputValue.Nothing;
         }
 
         public void DisplayCard(BlackJack.model.Card a_card)
@@ -76,6 +79,14 @@ public class SwedishView implements IView
             else
             {
                 System.out.println("Du vann!");
+            }
+        }
+
+        public void pause(){
+            try {
+                Thread.sleep(999);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 

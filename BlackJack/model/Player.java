@@ -8,11 +8,10 @@ public class Player {
 
   private List<Card> m_hand;
   protected final int g_maxScore = 21;
-  private List<IObserver> m_observers;
+
 
   public Player()
   {
-    m_observers = new ArrayList<IObserver>();
     m_hand = new LinkedList<Card>();
     System.out.println("Hello List World");
   }
@@ -73,21 +72,4 @@ public class Player {
 
     return score;
   }
-
-    public void Register(IObserver a_subscriber)
-    {
-        m_observers.add(a_subscriber);
-    }
-
-    public void GiveCard(Deck m_deck, boolean cardShown)
-    {
-        Card c = m_deck.GetCard();
-        c.Show(cardShown);
-        this.DealCard(c);
-
-        for(IObserver observer : m_observers)
-        {
-            observer.updateHand(c);
-        }
-    }
 }

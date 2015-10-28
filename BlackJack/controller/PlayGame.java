@@ -5,6 +5,8 @@ import BlackJack.model.IObserver;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
 
+import javax.swing.text.View;
+
 public class PlayGame implements IObserver{
 
   private Game m_game;
@@ -25,31 +27,26 @@ public class PlayGame implements IObserver{
     }
 
     int input = m_view.GetInput();
+    IView.InputValue inputValue = m_view.CheckInput(input);
 
-    return m_view.CheckInput(m_game, input);
-  }
-
-  public boolean StartGame(Game a_game)
-  {
-    return a_game.NewGame();
-  }
-
-  public boolean HitOnce(Game a_game)
-  {
-    return a_game.Hit();
-  }
-
-  public boolean StandDown(Game a_game)
-  {
-    return a_game.Stand();
+    if(inputValue == IView.InputValue.Play)
+    {
+      m_game.NewGame();
+    }
+    else if (inputValue == IView.InputValue.Hit)
+    {
+      m_game.Hit();
+    }
+    else if (inputValue == IView.InputValue.Stand)
+    {
+      m_game.Stand();
+    }
+    return inputValue != IView.InputValue.Quit;
   }
 
   public void updateHand(Card card) {
-    try {
-      m_view.DisplayCard(card);
-      Thread.sleep(999);
-    }
-    catch (InterruptedException e){ Thread.currentThread().interrupt(); }
+    m_view.DisplayCard(card);
+    m_view.pause();
   }
 
 }

@@ -9,11 +9,11 @@ class InternationalNewGameStrategy implements INewGameStrategy {
 
   public boolean NewGame(Deck a_deck, Dealer a_dealer, Player a_player) {
 
-    a_player.GiveCard(a_deck, true);
+    a_dealer.GiveCard(a_deck, a_player, true);
 
-    a_dealer.GiveCard(a_deck, true);
+    a_dealer.GiveCard(a_deck, a_dealer, true);
 
-    a_player.GiveCard(a_deck, true);
+    a_dealer.GiveCard(a_deck, a_player, true);
   
     return true;
   }

@@ -27,12 +27,9 @@ public class Game {
     return m_dealer.NewGame(m_player);
   }
   
-  public boolean Hit()
-  {
-    return m_dealer.Hit(m_player);
-  }
+  public boolean Hit() {return m_dealer.Hit(m_player);  }
   
-  public boolean Stand() { return m_dealer.Stand();  }
+  public boolean Stand() { return m_dealer.Stand(m_player);  }
   
   public Iterable<Card> GetDealerHand()
   {
@@ -56,7 +53,6 @@ public class Game {
 
   public void RegisterSubscribers(IObserver a_observer)
   {
-    m_player.Register(a_observer);
     m_dealer.Register(a_observer);
   }
     
