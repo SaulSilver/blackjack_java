@@ -9,21 +9,17 @@ public class Dealer extends Player {
 
   private Deck m_deck;
   private INewGameStrategy m_newGameRule;
-  private IHitStrategy m_soft17Rule;
-  private DrawWinRule m_drawWinRule;
+  private IHitStrategy m_hitRule;
+  private IWinStrategy m_winRule;
   private List<IObserver> m_observers;
 
   public Dealer(RulesFactory a_rulesFactory) {
     m_observers = new ArrayList<IObserver>();
 
     m_newGameRule = a_rulesFactory.GetNewGameRule();
-    m_soft17Rule = a_rulesFactory.GetSoft17Rule();
-    m_drawWinRule = a_rulesFactory.GetWinRule();
-    
-    /*for(Card c : m_deck.GetCards()) {
-      c.Show(true);
-      System.out.println("" + c.GetValue() + " of " + c.GetColor());
-    }    */
+    m_hitRule = a_rulesFactory.GetHitRule();
+    m_winRule = a_rulesFactory.GetWinRule();
+
   }
   
   
@@ -50,9 +46,9 @@ public class Dealer extends Player {
         c.Show(true);
       }
 
-      while (m_soft17Rule.DoHit(this))
+      while (m_hitRule.DoHit(this))
       {
-        b = m_soft17Rule.DoHit(this);
+        b = m_hitRule.DoHit(this);
         GiveCard(m_deck, a_player, true);
       }
     }
@@ -75,13 +71,13 @@ public class Dealer extends Player {
     }
     else if (CalcScore() == a_player.CalcScore())
     {
-      m_drawWinRule.whoWins();
+      m_winRule.DealerWin();
     }
     return CalcScore() >= a_player.CalcScore();
   }
 
   public boolean IsGameOver() {
-    if (m_deck != null && m_soft17Rule.DoHit(this) != true) {
+    if (m_deck != null && m_hitRule.DoHit(this) != true) {
         return true;
     }
     return false;

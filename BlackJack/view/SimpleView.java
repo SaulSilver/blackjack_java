@@ -3,6 +3,8 @@ package BlackJack.view;
         import BlackJack.controller.PlayGame;
         import BlackJack.model.Game;
 
+        import java.util.Scanner;
+
 public class SimpleView implements IView
 {
 
@@ -42,6 +44,20 @@ public class SimpleView implements IView
             return InputValue.Quit;
         }
         return InputValue.Nothing;
+    }
+
+    public int GetStrategy(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("What mode do you want? Basic (1) or Soft17 (2):");
+        int number = 0;
+        try {
+            number = scan.nextInt();
+        } catch (java.util.InputMismatchException e) {
+            scan.nextLine();
+        }
+        if(number == 1) {return 1;}
+        else if(number == 2) {return 2;}
+        else { return 0; }
     }
 
     public void DisplayCard(BlackJack.model.Card a_card)

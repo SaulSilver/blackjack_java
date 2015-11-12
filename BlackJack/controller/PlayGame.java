@@ -18,6 +18,9 @@ public class PlayGame implements IObserver{
 
     m_view.DisplayWelcomeMessage();
 
+    int strategyNumber = m_view.GetStrategy();
+
+
     m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
     m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
 
